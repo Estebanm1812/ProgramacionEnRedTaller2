@@ -36,7 +36,7 @@ public class UserServices {
 
     }
 
-    @POST
+    @GET
     @Path("getRecords/{nationalId}")
     @Produces("application/json")
     public Response getRecords(@PathParam("nationalId") String nationalId){
@@ -57,7 +57,7 @@ public class UserServices {
 
     }
 
-    @POST
+    @GET
     @Path("getAllRecords/{nationalId}")
     @Produces("application/json")
     public Response getAllRecords(@PathParam("nationalId") String nationalId){

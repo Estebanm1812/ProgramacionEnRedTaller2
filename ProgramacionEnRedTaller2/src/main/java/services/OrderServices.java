@@ -128,7 +128,7 @@ public class OrderServices {
     }
 
 
-    @POST
+    @GET
     @Path("getInfoOrder/{info}")
     @Produces("application/json")
     public Response getInfoOrder(@PathParam("info") String info){
