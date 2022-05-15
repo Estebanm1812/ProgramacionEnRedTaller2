@@ -105,7 +105,7 @@ public class UserProvider {
         int id = findUserId(Integer.parseInt(nationalId));
 
         System.out.println(id);
-        String sql = "SELECT ordersA00369267.id, ordersA00369267.creationDate, ordersA00369267.payDate FROM ordersA00369267 WHERE ordersA00369267.userID = $ORDERID" ;
+        String sql = "SELECT ordersA00369267.id, ordersA00369267.creationDate, ordersA00369267.payed, ordersA00369267.payDate FROM ordersA00369267 WHERE ordersA00369267.userID = $ORDERID" ;
 
         sql = sql.replace("$ORDERID",Integer.toString(id));
 
