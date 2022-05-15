@@ -9,7 +9,7 @@ import model.OrderInformationAnswer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Instant;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -135,7 +135,7 @@ public class OrderProvider {
         String sql="UPDATE ordersA00369267 SET payed = 1 WHERE id = $ID";
 
         long time = System.currentTimeMillis();
-        Instant instant = Instant.ofEpochSecond(time);
+        //Instant instant = Instant.ofEpochSecond(time);
         //
 
         sql = sql.replace("$ID", info);
