@@ -258,8 +258,7 @@ public class OrderProvider {
             conn.close();
 
         }else{
-
-
+            deleteProductFromOrder(order);
             conn.close();
 
         }
