@@ -106,6 +106,29 @@ public class OrderServices {
         }
 
     }
+    @PUT
+    @Path("removeProductQuantityFromOrder")
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Response removeProductQuantityFromOrder(OrderChange order){
+
+
+        OrderProvider provider = new OrderProvider();
+        try {
+            provider.removeProductQuantityFromOrder(order);
+            return Response.status(200).entity(order).build();
+        } catch (SQLException e) {
+
+            Message m = new Message("SQL Exception", e.getMessage());
+            return Response.status(500).entity(m).build();
+        } catch (ClassNotFoundException ex) {
+            Message m = new Message("Class not found Except", ex.getMessage());
+            return Response.status(500).entity(m).build();
+        }
+
+    }
+
+
 
     @PUT
     @Path("updatePayStatus/{info}")

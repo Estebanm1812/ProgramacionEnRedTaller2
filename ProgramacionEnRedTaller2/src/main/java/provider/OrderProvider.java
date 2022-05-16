@@ -224,4 +224,48 @@ public class OrderProvider {
 
 
     }
+
+    public void removeProductQuantityFromOrder(OrderChange order) throws SQLException, ClassNotFoundException {
+
+        DbConnection conn = new DbConnection();
+
+        ProductProvider provider = new ProductProvider();
+
+        String sql = "SELECT * FROM orders_productsA00369267 WHERE orderId = $ORDERID AND productId = $PRODUCTID";
+        sql = sql.replace("$ORDERID",  Integer.toString(order.getOrderId()));
+        int productId = provider.findProductId(order.getProductName());
+        sql = sql.replace("$PRODUCTID",  Integer.toString(productId));
+
+        Product product = new Product();
+        ResultSet results =  conn.getData(sql);
+        while(results.next()){
+
+
+            int quantity = results.getInt("quantity");
+
+            product = new Product(214124,"1fasdfas",quantity,31231);
+            //products.add(product);
+        }
+        if((product.getQuantity()-order.getQuantity())>0) {
+
+            sql="UPDATE orders_productsA00369267 SET quantity = $QUANTITY WHERE orderId = $ORDERID AND productId = $PRODUCTID";
+            sql= sql.replace("$ORDERID",  Integer.toString(order.getOrderId())); //Hacer cambio a time unix
+            sql = sql.replace("$QUANTITY",    Integer.toString(product.getQuantity()-order.getQuantity()));
+            sql = sql.replace("$PRODUCTID", Integer.toString(productId));
+
+            System.out.println(sql);
+            conn.runQuerry(sql);
+            conn.close();
+
+        }else{
+
+
+            conn.close();
+
+        }
+
+
+        }
+
+
 }
