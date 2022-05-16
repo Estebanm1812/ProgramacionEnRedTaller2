@@ -95,6 +95,7 @@ public class UserProvider {
 
         }
         */
+        conn.close();
         return orders;
     }
 
@@ -132,7 +133,7 @@ public class UserProvider {
             Order order = new Order(id2,Long.valueOf(creationDate),payed,Long.valueOf(payDate),id);
             orders.add(order);
         }
-
+        conn.close();
         return orders;
 
     }
