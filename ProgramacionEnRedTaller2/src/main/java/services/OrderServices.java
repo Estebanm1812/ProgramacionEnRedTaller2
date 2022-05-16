@@ -62,16 +62,16 @@ public class OrderServices {
 
     }
     @DELETE
-    @Path("deleteProductFromOrder/{info}")
+    @Path("deleteProductFromOrder")
     @Produces("application/json")
     @Consumes("application/json")
-    public Response deleteProductFromOrder(@PathParam("info") String info){
+    public Response deleteProductFromOrder(OrderChange info){
 
-        String parts[] = info.split("-");
+       // String parts[] = info.split("-");
         OrderProvider provider = new OrderProvider();
         try {
-            provider.deleteProductFromOrder(parts);
-            return Response.status(200).entity(parts).build();
+            provider.deleteProductFromOrder(info);
+            return Response.status(200).entity(info).build();
         } catch (SQLException e) {
 
             Message m = new Message("SQL Exception", e.getMessage());

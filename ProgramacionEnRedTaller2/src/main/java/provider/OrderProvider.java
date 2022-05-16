@@ -70,19 +70,19 @@ public class OrderProvider {
 
     }
 
-    public void deleteProductFromOrder(String[] parts) throws SQLException, ClassNotFoundException {
+    public void deleteProductFromOrder(OrderChange parts) throws SQLException, ClassNotFoundException {
 
         DbConnection conn = new DbConnection();
 
         //int numberOrder = Integer.parseInt(parts[0]);
-        String productName = parts[1];
+        //String productName = parts[1];
         //int quantity = Integer.parseInt(parts[2]);
 
         ProductProvider provider = new ProductProvider();
 
         String sql="DELETE FROM orders_productsA00369267 WHERE orderId = $ORRDERID AND productId = $PRODUCTID";
-        sql= sql.replace("$ORRDERID", parts[0]); //Hacer cambio a time unix
-        int id = provider.findProductId(productName);
+        sql= sql.replace("$ORRDERID",  Integer.toString(parts.getOrderId())); //Hacer cambio a time unix
+        int id = provider.findProductId(parts.getProductName());
 
         if(id==0){
             conn.close();
